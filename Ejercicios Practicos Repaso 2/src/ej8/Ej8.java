@@ -22,12 +22,12 @@ public class Ej8 {
 		while (c1 || c2);
 
 		if ((texto.endsWith("hastaluego") && (texto.startsWith("hola")))) {
-			Integer a = texto.lastIndexOf("hola")+4;
+			Integer a = texto.indexOf("hola") + 4;
 			Integer b = texto.lastIndexOf("hastaluego");
 			textoOut = texto.substring(a, b);
 			System.out.println("Entendido. Mensaje:" + textoOut);
 		}
-
+		sc.close();
 	}
 
 }
