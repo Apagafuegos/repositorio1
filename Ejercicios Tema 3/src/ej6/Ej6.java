@@ -20,7 +20,7 @@ public class Ej6 {
 
 		do {
 			apuestaMaquina = rand.nextInt(0, 7);// Para que no sea igual la apuesta del usuario ni la de la maquina
-		} while (apuestaUser == apuestaMaquina && apuestaMaquina >= manoMaquina);
+		} while (apuestaUser == apuestaMaquina && apuestaMaquina < manoMaquina);
 		
 		do {
 			System.out.println("Ahora revela tu mano");
