@@ -23,7 +23,7 @@ public class Ej17 {
 			fn1 = fn2 - fn1;
 
 		}
-
+		sc.close();
 	}
 
 }
