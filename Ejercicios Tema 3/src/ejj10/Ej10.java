@@ -5,11 +5,13 @@ import java.util.Scanner;
 
 public class Ej10 {
 
-	public static int tirarDado() {
+	public static Integer tirarDado() {
+
 		Random ram = new Random();
 		Integer tirada = ram.nextInt(1, 7);
 		return tirada;
 	}
+
 
 	public static void main(String[] args) {
 
@@ -31,18 +33,18 @@ public class Ej10 {
 					System.out.println("Tu dado ha dado " + dado);
 					Integer aux = posUser; // Posicion previa, por si se pasa
 					posUser += dado;
-					if (posUser % 5 == 0) {
+					if (posUser % 5 == 0 && posUser != 60) {
 						posUser += 5;
 						System.out.println(
-								"De oca en oca tiras porque te TOCAAA, pasa de " + (posUser - 5) + " a " + posUser);
+								"De oca en oca tiras porque te TOCAAA, pasa de " + (posUser - 5) + " a " + posUser); //De oca en oca (si es multiplo de 5 la posicion)
 					}
 					if (posUser > 60) {
-						Integer aux2 = 60 - aux;
+						Integer aux2 = 60 - aux; //Para que corrija si se pasa de 60
 						posUser = 60 - (dado - aux2);
 					}
 					if (dado == 6) {
 						turno = true;
-						System.out.println("Turno gratis jeje");
+						System.out.println("Turno gratis jeje"); //Turno gratis si tiras 6
 					} else {
 						turno = false;
 					}
@@ -55,7 +57,7 @@ public class Ej10 {
 					System.out.println("El dado de EvilCPU ha dado " + dado);
 					Integer aux = posCPU; // Posicion previa, por si se pasa
 					posCPU += dado;
-					if (posCPU % 5 == 0) {
+					if (posCPU % 5 == 0 && posCPU != 60) {
 						posCPU += 5;
 						System.out.println(
 								"De oca en oca tira porque LE TOCAAA, pasa de " + (posCPU - 5) + " a " + posCPU);
@@ -71,8 +73,8 @@ public class Ej10 {
 						turno = true;
 					}
 				}
-
-				if (posUser == 19 && check) {
+ 
+				if (posUser == 19 && check) { //Penalización de casilla 19 para usuario
 					if (i == 0) {
 						System.out.println("Pierdes 1 turno");
 					}
@@ -83,7 +85,7 @@ public class Ej10 {
 						check = false;
 						i = 0;
 					}
-				} else if (posUser == 31 && check) {
+				} else if (posUser == 31 && check) {//Penalización de casilla 31 para usuario
 					if (i == 0) {
 						System.out.println("Pierdes 2 turnos");
 					}
@@ -95,7 +97,7 @@ public class Ej10 {
 						i = 0;
 					}
 
-				} else if (posUser == 56 && check) {
+				} else if (posUser == 56 && check) {//Penalización de casilla 56 para usuario
 					if (i == 0) {
 						System.out.println("Pierdes 3 turnos");
 					}
@@ -109,9 +111,9 @@ public class Ej10 {
 
 				}
 
-				if (posCPU == 19 && check) {
+				if (posCPU == 19 && check) {//Penalización de casilla 19 para cpu
 					if (i == 0) {
-						System.out.println("Pierdes 1 turno");
+						System.out.println("EvilCPU pierde 1 turno");
 					}
 					turno = true;
 					i++;
@@ -120,9 +122,9 @@ public class Ej10 {
 						check = false;
 						i = 0;
 					}
-				} else if (posCPU == 31 && check) {
+				} else if (posCPU == 31 && check) {//Penalización de casilla 31 para cpu
 					if (i == 0) {
-						System.out.println("Pierdes 2 turnos");
+						System.out.println("EvilCPU pierde 2 turnos");
 					}
 					turno = true;
 					i++;
@@ -132,9 +134,9 @@ public class Ej10 {
 						i = 0;
 					}
 
-				} else if (posCPU == 56 && check) {
+				} else if (posCPU == 56 && check) {//Penalización de casilla 56 para cpu
 					if (i == 0) {
-						System.out.println("Pierdes 3 turnos");
+						System.out.println("EvilCPU pierde 3 turnos");
 					}
 					turno = true;
 					i++;
@@ -147,9 +149,9 @@ public class Ej10 {
 				}
 
 			}
-		} while ((posUser != 60 && posCPU != 60));
+		} while ((posUser != 60 && posCPU != 60)); //Si la posicion es 60, finaliza el bucle
 
-		if (posUser == 60) {
+		if (posUser == 60) { //Si alguno de los dos llega a 60, saca este mensaje
 			System.out.println("Enhorabuena!!! GANASTE");
 		} else {
 			System.out.println("Has perdido, pringao.");

@@ -13,7 +13,7 @@ public class Ej22 {
 			sc.nextLine();
 		}
 		
-
+		sc.close();
 	}
 
 }
