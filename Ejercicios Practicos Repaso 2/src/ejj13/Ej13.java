@@ -20,7 +20,7 @@ public class Ej13 {
 			}
 			
 			
-		}while(!(mensajeIgCase.contains("fin")));
+		}while(!(mensajeIgCase.equalsIgnoreCase("fin")));
 		
 		System.out.println(mensajeTotal);
 		sc.close();

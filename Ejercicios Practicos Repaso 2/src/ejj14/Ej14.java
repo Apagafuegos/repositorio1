@@ -18,10 +18,11 @@ public class Ej14 {
 
 		} while (contraseña.length() < 8);
 
-		String contraseñaTrans = contraseña.replace("a", "4").replace("e", "3").replace("i", "1").replace("o", "0").replace("t", "7");
+		String contraseñaTrans = contraseña.replaceAll("a", "4").replaceAll("e", "3").replaceAll("i", "1").replaceAll("o", "0").replaceAll("t", "7");
 
 		System.out.println(contraseñaTrans);
 
+		sc.close();
 	}
-
+	
 }

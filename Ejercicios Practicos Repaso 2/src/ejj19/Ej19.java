@@ -23,7 +23,7 @@ public class Ej19 {
 			case 2:
 				System.out.println("Introduce la cantidad de euros a convertir");
 				cantidad = sc.nextDouble();
-				System.out.println(cantidad + " euros son " + cantidad*166.386 + " pesetas.");
+				System.out.println(cantidad + " euros son " + cantidad*166.386 + " pesetas.");				
 				break;
 			case 3:
 				break;
@@ -46,7 +46,9 @@ public class Ej19 {
 			
 			
 		}while(seleccion !=3);
-		
+	
+		sc.close();
 	}
 
+	
 }
