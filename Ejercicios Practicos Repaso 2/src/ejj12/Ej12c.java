@@ -22,7 +22,7 @@ public class Ej12c {
 			for (Integer n2 = 1; n2 <= tamaño; n2++) {
 
 				// Tapa
-				if (check == true) {
+				if (check) {
 					for (n3 = 1; n3 <= 4 + 4 * (tamaño - 1); n3++) //Cada línea tiene 5 caracteres mas 4 multiplicado por el tamaño menos 1
 						//caracteres linea = 5+4(n-1); por tanto, necesito generar 5+4(n-1) tapas MENOS los dos espacios del final y principio
 					{
