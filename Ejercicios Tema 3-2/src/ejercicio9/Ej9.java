@@ -1,6 +1,5 @@
 package ejercicio9;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ej9 {
@@ -11,30 +10,25 @@ public class Ej9 {
 		System.out.println("¿Cuantos números vas a meter?");
 		Integer longitudArray = sc.nextInt();
 		Integer arrayNum[] = new Integer[longitudArray];
-		Integer arrayNumAux[] = new Integer[longitudArray];
 		
 		for (int i = 0; i < arrayNum.length; i++) {
 			System.out.println("Introduce el número " + (i+1));
 			Integer numero = sc.nextInt();
 			arrayNum[i] = numero;
-			arrayNumAux[i] = numero;
 		}
-		for (int i = 1; i < arrayNumAux.length; i++) {
+		
+		for (int i = 0; i < arrayNum.length; i++) {
 			
-				for (int j = 0; j < i; j++) {
+				for (int j = i+1; j < arrayNum.length; j++) {
 					
-					if(arrayNumAux[i] < arrayNum[j]) {
-						arrayNum[j] = arrayNumAux[i];
-					}else if(j<arrayNum.length - 1){
-						arrayNum[j+1] = arrayNumAux[i];
+					if(arrayNum[i] > arrayNum[j]) {
+						Integer aux = arrayNum[i];
+						arrayNum[i] = arrayNum[j];
+						arrayNum[j] = aux;
+						
 					}
 				
 			}
-//			if(arrayNumAux[i+1] < arrayNum[i] && i < arrayNum.length) {
-//				arrayNum[i] = arrayNumAux[i+1];
-//				arrayNum[i+1] = arrayNum[i];
-//				
-//			}
 		}
 		
 		
