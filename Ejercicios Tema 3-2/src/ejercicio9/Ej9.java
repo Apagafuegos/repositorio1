@@ -36,7 +36,7 @@ public class Ej9 {
 		for (int i = 0; i < arrayNum.length; i++) {
 			System.out.print(arrayNum[i] + " ");
 		}
-
+		sc.close();
 	}
 
 }
