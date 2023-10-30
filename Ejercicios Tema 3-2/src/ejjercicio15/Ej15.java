@@ -14,7 +14,7 @@ public class Ej15 {
 		String urlDivididoAux[] = urlSinProt.split("\\.");
 		
 		for (int i = 0; i < 1; i++) {
-			System.out.println(urlDividido[i]);
+			System.out.println(urlDividido[i] + "//");
 		}
 		
 		for (int i = 0; i < urlDivididoAux.length; i++) {
