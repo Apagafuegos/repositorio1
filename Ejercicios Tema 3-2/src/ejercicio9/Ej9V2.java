@@ -1,7 +1,5 @@
 package ejercicio9;
 
-	package ejercicio9;
-
 	import java.util.Scanner;
 
 	public class Ej9V2 {
