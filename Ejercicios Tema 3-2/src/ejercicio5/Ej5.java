@@ -9,6 +9,8 @@ public class Ej5 {
 		Scanner sc = new Scanner(System.in);
 		Integer maximo = 0;
 		Integer minimo = 0;
+		Integer posMax = 0;
+		Integer posMin = 0;
 		System.out.println("¿Cuantos números vas a meter?");
 		Integer longitudArray = sc.nextInt();
 		Integer arrayNum[] = new Integer[longitudArray];
@@ -24,11 +26,15 @@ public class Ej5 {
 			if(j == 0) {
 				maximo = arrayNum[j];
 				minimo = arrayNum[j];
+				posMax = j + 1;
+				posMin = j + 1;
 			}else if((arrayNum[j] > maximo) ||(arrayNum[j] < minimo) ) {
 				if(arrayNum[j] > maximo) {
 					maximo = arrayNum[j];
+					posMax = j + 1;
 				}else {
 					minimo = arrayNum[j];
+					posMin = j + 1;
 				}
 			}
 		}
@@ -37,8 +43,8 @@ public class Ej5 {
 			System.out.print(arrayNum[i] + " ");
 		}
 		System.out.println();
-		System.out.println("El número menor de los introducidos es " + minimo);
-		System.out.println("El número mayor de los introducidos es " + maximo);
+		System.out.println("El número menor de los introducidos es " + minimo + " y fue introducido en el " + posMin + " lugar.");
+		System.out.println("El número mayor de los introducidos es " + maximo + " y fue introducido en el " + posMax + " lugar.");
 
 	}
 

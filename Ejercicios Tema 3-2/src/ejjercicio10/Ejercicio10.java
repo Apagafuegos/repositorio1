@@ -7,7 +7,6 @@ public class Ejercicio10 {
 	public static Integer[] fibonacci(Integer tamaño) {
 		
 		Integer[] sucesion = new Integer[tamaño];
-		Integer num = 0;
 		Integer fn1 = 0;
 		Integer fn2 = 1;
 		

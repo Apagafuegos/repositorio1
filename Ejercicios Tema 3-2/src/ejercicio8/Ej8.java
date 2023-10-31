@@ -6,26 +6,35 @@ public class Ej8 {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Va a introducir 3 palabras");
+		System.out.println("Cuantos números quieres introducir");
 		Scanner sc = new Scanner(System.in);
-		String palabraTotal = "";
-		String[] palabras = new String[3];
+		Integer tamaño = sc.nextInt();
+		Integer[] numeros = new Integer[tamaño];
 
-		for (int i = 0; i < palabras.length; i++) {
-
-			String palabra = sc.nextLine();
-			palabras[i] = palabra;
-
-		}
-
-		for (int j = palabras.length-1; j >= 0; j--) {
-
-			palabraTotal = palabraTotal + palabras[j];
+		
+		for (int i = 0; i < numeros.length; i++) {
+			System.out.println("Introduce el " + (i+1) + " número.");
+			Integer numero = sc.nextInt();
+			numeros[i] = numero;
 
 		}
 
-		System.out.println(palabraTotal);
+		Integer inicio = 0;
+		for (int fin = numeros.length-1; fin > (numeros.length - 1)/2; fin--) {
 
+			Integer aux = numeros[inicio];
+			numeros[inicio] = numeros[fin];
+			numeros[fin] = aux;
+			
+			inicio++;
+		}
+		
+		for (int i = 0; i < numeros.length; i++) {
+			
+			System.out.println(numeros[i]);
+			
+		}
+		sc.close();
 	}
 
 }
