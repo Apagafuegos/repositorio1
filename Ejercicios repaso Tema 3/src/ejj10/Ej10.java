@@ -10,9 +10,10 @@ public class Ej10 {
 		Integer numAlumnos = sc.nextInt();
 		sc.nextLine();
 		Double[] notasMedias = new Double[numAlumnos];
-		Integer[] notasAlumno = new Integer[3];
+		Double[] notasAlumno = new Double[3];
 		String[] alumnos = new String[numAlumnos];
 		Double notaMedia = 0.0;
+		Double notaExamen = 0.0;
 		Integer contAlumnos = 0;
 		Integer i = 0;
 
@@ -21,8 +22,11 @@ public class Ej10 {
 			String nombre = sc.nextLine();
 			alumnos[contAlumnos] = nombre;
 			for (i = 0; i < notasAlumno.length; i++) {
-				System.out.println("Introduce la nota del examen " + (i + 1));
-				notasAlumno[i] = sc.nextInt();
+				do {
+					System.out.println("Introduce la nota del examen " + (i + 1));
+					notaExamen = sc.nextDouble();
+				} while (notaExamen < 0 || notaExamen > 10);
+				notasAlumno[i] = notaExamen;
 			}
 			sc.nextLine();
 			notaMedia = 0.0;
@@ -33,7 +37,7 @@ public class Ej10 {
 			notasMedias[contAlumnos] = notaMedia;
 			contAlumnos++;
 		} while (contAlumnos < numAlumnos);
-		
+
 		System.out.println("LISTADO DE NOTAS");
 		for (int j = 0; j < alumnos.length; j++) {
 			System.out.println("Alumno: " + alumnos[j] + " - Nota media: " + notasMedias[j]);
@@ -42,7 +46,7 @@ public class Ej10 {
 		for (Double media : notasMedias) {
 			notaMedia += media;
 		}
-		System.out.println("La media de los alumnos ha sido de " + notaMedia/numAlumnos);
+		System.out.println("La media de los alumnos ha sido de " + notaMedia / numAlumnos);
 	}
 
 }
