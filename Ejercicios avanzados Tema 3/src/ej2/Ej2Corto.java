@@ -6,19 +6,33 @@ import java.util.Scanner;
 
 public class Ej2Corto {
 
-	public static void main(String[] args) {
-
+	public static String[][] generarTablero() {
 		Integer columnas = 3, filas = 3;
 		String[][] tablero = new String[filas][columnas];
-		Integer fila = 0;
-		Integer columna = 0;
 
 		for (int i = 0; i < tablero.length; i++) {
 			String[] filaZ = tablero[i];
 			for (int j = 0; j < filaZ.length; j++) {
-				filaZ[j] = "---";
+				filaZ[j] = "-";
 			}
 		}
+		return tablero;
+	}
+
+	public static void imprimirTablero(String tablero[][]) {
+		for (int j = 0; j < 3; j++) {
+			for (int j2 = 0; j2 < 3; j2++) {
+				System.out.print(tablero[j][j2] + " ");
+			}
+			System.out.println();
+
+		}
+	}
+
+	public static void main(String[] args) {
+
+		Integer filaUsuario = 0;
+		Integer columnaUsuario = 0;
 
 		List<String> listaPosiciones = new ArrayList<String>();
 		Boolean turno = false, ganado = false, posicionTomada = false;
@@ -26,14 +40,8 @@ public class Ej2Corto {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Inicio de partida:");
-
-		for (int j = 0; j < filas; j++) {
-			for (int j2 = 0; j2 < columnas; j2++) {
-				System.out.print(tablero[j][j2] + " ");
-			}
-			System.out.println();
-
-		}
+		String[][] tablero = generarTablero();
+		imprimirTablero(tablero);
 
 		do {
 			if (turno) {
@@ -45,30 +53,30 @@ public class Ej2Corto {
 			do {
 				do {
 					System.out.println("Introduce la fila");
-					fila = sc.nextInt();
-					if (fila > 2 || fila < 0) {
+					filaUsuario = sc.nextInt();
+					if (filaUsuario > 2 || filaUsuario < 0) {
 						System.err.println("Nº de fila no correcta");
 					}
-				} while (fila > 2 || fila < 0);
+				} while (filaUsuario > 2 || filaUsuario < 0);
 				do {
 					System.out.println("Introduce la columna");
-					columna = sc.nextInt();
-					if (columna > 2 || columna < 0) {
+					columnaUsuario = sc.nextInt();
+					if (columnaUsuario > 2 || columnaUsuario < 0) {
 						System.err.println("Nº de fila no correcta");
 					}
-				} while (columna > 2 || columna < 0);
+				} while (columnaUsuario > 2 || columnaUsuario < 0);
 
-				String posicion = fila.toString() + "," + columna.toString();
+				String posicion = filaUsuario.toString() + "," + columnaUsuario.toString();
 
 				if (listaPosiciones.contains(posicion)) {
 					System.err.println("Esa coordenada ya está tomada");
 					posicionTomada = true;
 				} else {
 					if (turno) {
-						tablero[fila][columna] = "O";
+						tablero[filaUsuario][columnaUsuario] = "O";
 						turno = false;
 					} else {
-						tablero[fila][columna] = "X";
+						tablero[filaUsuario][columnaUsuario] = "X";
 						turno = true;
 					}
 					listaPosiciones.add(posicion);
@@ -77,17 +85,16 @@ public class Ej2Corto {
 
 			} while (posicionTomada);
 
-			for (int j = 0; j < filas; j++) {
-				for (int j2 = 0; j2 < columnas; j2++) {
-					System.out.print(tablero[j][j2] + " ");
-				}
-				System.out.println();
+			imprimirTablero(tablero);
 
-			}
-			Boolean diagonal1X = (tablero[0][0].contains("X") && tablero[1][1].contains("X") && tablero[2][2].contains("X"));
-			Boolean diagonal1O = (tablero[0][0].contains("O") && tablero[1][1].contains("O") && tablero[2][2].contains("O"));
-			Boolean diagonal2X = (tablero[2][0].contains("X") && tablero[1][1].contains("X") && tablero[0][2].contains("X"));
-			Boolean diagonal2O = (tablero[2][0].contains("O") && tablero[1][1].contains("O") && tablero[0][2].contains("O"));
+			Boolean diagonal1X = (tablero[0][0].contains("X") && tablero[1][1].contains("X")
+					&& tablero[2][2].contains("X"));
+			Boolean diagonal1O = (tablero[0][0].contains("O") && tablero[1][1].contains("O")
+					&& tablero[2][2].contains("O"));
+			Boolean diagonal2X = (tablero[2][0].contains("X") && tablero[1][1].contains("X")
+					&& tablero[0][2].contains("X"));
+			Boolean diagonal2O = (tablero[2][0].contains("O") && tablero[1][1].contains("O")
+					&& tablero[0][2].contains("O"));
 			Boolean hor1X = (tablero[1][0].contains("X") && tablero[1][1].contains("X") && tablero[1][2].contains("X"));
 			Boolean hor1O = (tablero[1][0].contains("O") && tablero[1][1].contains("O") && tablero[1][2].contains("O"));
 			Boolean hor2X = (tablero[0][0].contains("X") && tablero[0][1].contains("X") && tablero[0][2].contains("X"));
