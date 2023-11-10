@@ -114,6 +114,9 @@ public class Ej2Corto {
 			} else if (diagonal1X || diagonal2X || hor1X || hor2X || hor3X || ver1X || ver2X || ver3X) {
 				System.out.println("¡Gana el Jugador 1!");
 				ganado = true;
+			}else if(listaPosiciones.size() == 9 && !ganado) {
+				System.out.println("¡Nadie ha ganado y no hay más huecos que ocupar!");
+				ganado = true;
 			}
 
 		} while (!ganado);

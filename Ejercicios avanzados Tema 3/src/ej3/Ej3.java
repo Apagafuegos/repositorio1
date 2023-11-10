@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Ej3 {
 
-	public static String[][] creacionTableroMuestra() {
+	public static String[][] creacionTableroMuestra() { // Tablero que se enseña al jugador
 
 		String[][] tableroMuestra = new String[10][10];
 
@@ -21,11 +21,11 @@ public class Ej3 {
 		return tableroMuestra;
 	}
 
-	public static String[][] creacionTableroJuego() {
+	public static String[][] creacionTableroJuego() { // Tablero en el que están las minas y determina la partida
 		String[][] tableroJuego = new String[10][10];
-		Random rand = new Random();
-		Integer n1 = rand.nextInt(0, 10);
-		Integer n2 = rand.nextInt(0, 10);
+		Random rand = new Random(); // 2 números random que determinan donde se van a poner las 5 minas
+		Integer n1 = rand.nextInt(0, 10); // x
+		Integer n2 = rand.nextInt(0, 10); // y
 		Integer contMinas = 0;
 
 		for (int i = 0; i < tableroJuego.length; i++) {
@@ -46,7 +46,7 @@ public class Ej3 {
 	}
 
 	public static void imprimirTablero(String[][] tablero) {
-
+		// Método que imprime cualquiera de los tableros
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero.length; j++) {
 				System.out.print(tablero[i][j] + " ");
@@ -98,23 +98,22 @@ public class Ej3 {
 
 			} while ((posicionesOcupadas.contains(coordenadaTotal)));
 			posicionesOcupadas.add(coordenadaTotal);
+			posicionesCubiertas++;
 			coordenadaTotal = "";
-			if (tableroJuego[x][y].equals("M")) {
+			if (tableroJuego[x][y].equals("M")) { // Si la coordenada que elije tiene una mina acaba el juego
 				System.out.println("¡Una mina ha explotado!");
 				System.out.println("GAME OVER :(");
 				minaExplota = true;
 			} else {
-				contMinasPosicion = 0;
-				for (int i = x - 1; i <= x + 1; i++) {
+				contMinasPosicion = 0; // Descubre el número de minas que tiene la coordenada escogida alrededor
+										// (arriba, abajo, izq, der)
+				for (int i = x - 1; i <= x + 1; i++) {// Posición horizontal izq, der
 
-					for (int j = y - 1; j <= y + 1; j++) {
-						if (!(i < 0 || j < 0 || i > 9 || j > 9)) {
-							if (tableroJuego[x][y].equals("M")) {
-								posicionesCubiertas++;
-							} else {
-								if (tableroJuego[i][j].equals("M")) {
-									contMinasPosicion++;
-								}
+					for (int j = y - 1; j <= y + 1; j++) { // Pos. vertical, arriba, abajo
+						if (!(i < 0 || j < 0 || i > 9 || j > 9)) { // Comprobación de que no estamos en uno de los
+																	// bordes
+							if (tableroJuego[i][j].equals("M")) {
+								contMinasPosicion++;
 
 							}
 						}
@@ -128,21 +127,15 @@ public class Ej3 {
 				}
 
 			}
-
-			for (int i = 0; i < tableroMuestra.length; i++) {
-				for (int j = 0; j < tableroMuestra.length; j++) {
-
-					if (tableroMuestra[i][j].equals(" ")) {
-						posicionesCubiertas++;
-					}
-				}
-			}
-
-			// imprimirTablero(tableroJuego);
+			//imprimirTablero(tableroJuego);
+			if(!minaExplota) {
+			System.out.println("Llevas " + posicionesCubiertas + " posiciones cubiertas sin explotar ninguna mina.");
 			System.out.println();
 			imprimirTablero(tableroMuestra);
-
+			}
+			
 		} while (posicionesCubiertas < 95 && !minaExplota);
+		sc.close();
 
 	}
 
