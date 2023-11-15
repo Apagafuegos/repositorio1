@@ -7,14 +7,12 @@ import java.util.Scanner;
 public class Ej20 {
 
 	public static String palabraAdivinar() {
+
 		String[] palabras = new String[] { "azulejo", "tenedor", "saltamontes", "carretilla", "molinero", "sofisticado",
 				"terremoto", "culinario", "teclado", "primavera" };
-
 		Random rand = new Random();
 		Integer i = rand.nextInt(0, 10);
-
 		String eleccion = palabras[i];
-
 		return eleccion;
 	}
 
@@ -42,40 +40,40 @@ public class Ej20 {
 			System.out.println();
 			System.out.println("Ve introduciendo letras jiji");
 			intento = sc.nextLine().trim().toLowerCase();
-			
+
 			for (int i = 0; i < adivinanza.length; i++) {
-				if(intento.equals(adivinanza[i])) {
+				if (intento.equals(adivinanza[i])) {
 					partida[i] = intento;
 					check = true;
 				}
 			}
-			
-			if(check) {
+
+			if (check) {
 				System.out.println("¡Has acertado! Esa letra si es contenida por la palabra :)");
 				check = false;
-			}else {
+			} else {
 				intentos--;
 				System.out.println("Fallaste, te quedan " + intentos + " intentos.");
 			}
-			
-			if(Arrays.equals(partida, adivinanza)) {
+
+			if (Arrays.equals(partida, adivinanza)) {
 				ganado = false;
 			}
-			
-			
 
 		} while (intentos > 0 && ganado);
-		
-		if(intentos == 0) {
+
+		if (intentos == 0) {
 			System.out.println("GAME OVER");
-		}else {
+		} else {
 			System.out.print("¡Felicidades, acertaste la palabra ");
 		}
-		
-		for (int i = 0; i < partida.length; i++) {
-			System.out.print(partida[i]);
+
+		if (!ganado) {
+			for (int i = 0; i < partida.length; i++) {
+				System.out.print(partida[i]);
+			}
+			System.out.print("!");
 		}
-		System.out.print("!");
 		sc.close();
 	}
 

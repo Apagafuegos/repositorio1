@@ -68,9 +68,9 @@ public class Ej2Corto {
 
 				String posicion = filaUsuario.toString() + "," + columnaUsuario.toString();
 
-				if (listaPosiciones.contains(posicion)) {
+				if (listaPosiciones.contains(posicion)) {//if (lista[i][j].contains("-")) 
 					System.err.println("Esa coordenada ya está tomada");
-					posicionTomada = true;
+					posicionTomada = true; 
 				} else {
 					if (turno) {
 						tablero[filaUsuario][columnaUsuario] = "O";
