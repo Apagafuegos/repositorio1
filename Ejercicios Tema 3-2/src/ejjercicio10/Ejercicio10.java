@@ -36,14 +36,14 @@ public class Ejercicio10 {
 			num = sc.nextInt();
 		} while (num <= 2);
 		
-		Integer[] arrayFibonacci = new Integer[num];
-		arrayFibonacci = fibonacci(num);
-
+		Integer[] arrayFibonacci = fibonacci(num); 
 		
-		for (int k = 0; k < arrayFibonacci.length; k++) {
+		for (Integer termino : arrayFibonacci) {
 			
-			System.out.print(arrayFibonacci[k] + " ");
-		} sc.close();
+			System.out.println(termino + " ");
+		}
+		
+		sc.close();
 	}
 
 }

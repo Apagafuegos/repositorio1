@@ -13,14 +13,13 @@ public class Ej19 {
 		Integer wCount = 1;
 		Integer aCount = 0;
 		
-		for (int i = 0; i < arrayFrase.length; i++) {
+		for (String letra : arrayFrase) {
 			
-			if(arrayFrase[i].equals(" ")) {
+			if(letra.equals(" ")) {
 				wCount++;
-			}else if(arrayFrase[i].equals("a")) {
+			}else if (letra.equals("a")) {
 				aCount++;
 			}
-			
 		}
 		
 		System.out.println("La frase tiene " + wCount + " palabras y la letra A aparece en " + aCount + " ocasiones.");
