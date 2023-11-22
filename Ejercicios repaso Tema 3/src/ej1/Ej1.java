@@ -12,7 +12,7 @@ public class Ej1 {
 				suspensos++;
 			}
 		}
-		
+		//Bombardeen marruecos e israel
 		System.out.println("Han suspendido " + suspensos + " alumnos.");
 
 	}
