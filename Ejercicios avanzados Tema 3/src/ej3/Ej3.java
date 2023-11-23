@@ -33,15 +33,12 @@ public class Ej3 {
 				tableroJuego[i][j] = "-";
 			}
 		}
-
 		do {
 			tableroJuego[n1][n2] = "M";
 			n1 = rand.nextInt(0, 10);
 			n2 = rand.nextInt(0, 10);
 			contMinas++;
-
 		} while (contMinas < 5);
-
 		return tableroJuego;
 	}
 
@@ -53,7 +50,6 @@ public class Ej3 {
 			}
 			System.out.println();
 		}
-
 	}
 
 	public static void main(String[] args) {
@@ -73,7 +69,6 @@ public class Ej3 {
 		Boolean minaExplota = false;
 
 		do {
-
 			do {
 				if (posicionesOcupadas.contains(coordenadaTotal)) {
 					System.err.println("Ya has desvelado esa coordenada");
@@ -85,7 +80,6 @@ public class Ej3 {
 					System.out.println("Introduce coordenada X");
 					x = sc.nextInt();
 				} while ((x < 0 || x > 9));
-
 				do {
 					if (y < 0 || y > 9) {
 						System.err.println("Coordenada Y no correcta");
@@ -93,9 +87,7 @@ public class Ej3 {
 					System.out.println("Introduce coordenada Y");
 					y = sc.nextInt();
 				} while (y < 0 || y > 9);
-
 				coordenadaTotal = x.toString() + ":" + y.toString();
-
 			} while ((posicionesOcupadas.contains(coordenadaTotal)));
 			posicionesOcupadas.add(coordenadaTotal);
 			posicionesCubiertas++;
@@ -108,35 +100,30 @@ public class Ej3 {
 				contMinasPosicion = 0; // Descubre el número de minas que tiene la coordenada escogida alrededor
 										// (arriba, abajo, izq, der)
 				for (int i = x - 1; i <= x + 1; i++) {// Posición horizontal izq, der
-
 					for (int j = y - 1; j <= y + 1; j++) { // Pos. vertical, arriba, abajo
 						if (!(i < 0 || j < 0 || i > 9 || j > 9)) { // Comprobación de que no estamos en uno de los
 																	// bordes
 							if (tableroJuego[i][j].equals("M")) {
 								contMinasPosicion++;
-
 							}
 						}
 					}
 				}
-
 				if (contMinasPosicion != 0) {
 					tableroMuestra[x][y] = contMinasPosicion.toString();
 				} else {
 					tableroMuestra[x][y] = "-";
 				}
+			}
+			// imprimirTablero(tableroJuego);
+			if (!minaExplota) {
+				System.out
+						.println("Llevas " + posicionesCubiertas + " posiciones cubiertas sin explotar ninguna mina.");
+				System.out.println();
+				imprimirTablero(tableroMuestra);
+			}
 
-			}
-			//imprimirTablero(tableroJuego);
-			if(!minaExplota) {
-			System.out.println("Llevas " + posicionesCubiertas + " posiciones cubiertas sin explotar ninguna mina.");
-			System.out.println();
-			imprimirTablero(tableroMuestra);
-			}
-			
 		} while (posicionesCubiertas < 95 && !minaExplota);
 		sc.close();
-
 	}
-
 }

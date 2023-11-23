@@ -12,10 +12,10 @@ public class Ej10 {
 		Double[] notasMedias = new Double[numAlumnos];
 		Double[] notasAlumno = new Double[3];
 		String[] alumnos = new String[numAlumnos];
-		Double notaMedia = 0.0;
+		Double notaMedia;
 		Double notaExamen = 0.0;
 		Integer contAlumnos = 0;
-		Integer i = 0;
+		Integer i;
 
 		do {
 			System.out.println("Introduce el nombre del alumno " + (contAlumnos + 1));
@@ -48,5 +48,4 @@ public class Ej10 {
 		}
 		System.out.println("La media de los alumnos ha sido de " + notaMedia / numAlumnos);
 	}
-
 }
