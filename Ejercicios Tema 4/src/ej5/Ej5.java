@@ -11,5 +11,14 @@ public class Ej5 {
 	public static Integer sumar(Integer n1, Integer n2) {
 		return n1 + n2;
 	}
+	public static Integer restar(Integer n1, Integer n2) {
+		return n1 + n2;
+	}
+	public static Integer multiplicar(Integer n1, Integer n2) {
+		return n1 + n2;
+	}
+	public static Integer dividir(Integer n1, Integer n2) {
+		return n1 + n2;
+	}
 
 }

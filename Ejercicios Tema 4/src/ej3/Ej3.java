@@ -1,5 +1,8 @@
 package ej3;
 
+import ej1.Ej1;
+import ej2.Ej2;
+
 public class Ej3 {
 
 	public static void main(String[] args) {
@@ -11,19 +14,10 @@ public class Ej3 {
 	
 	public static String getMayMin(Integer n, String frase) {
 		if (n == 1){
-			return getMayusculas(frase);
+			return Ej1.getMayusculas(frase);
 		}else {
-			return getMinusculas(frase);
+			return Ej2.getMinusculas(frase);
 		}
-	}
-	
-	//Ej 4
-	public static String getMayusculas(String frase) {
-		return frase.trim().toUpperCase();
-	}
-
-	public static String getMinusculas(String frase) {
-		return frase.trim().toLowerCase();
 	}
 		
 }
