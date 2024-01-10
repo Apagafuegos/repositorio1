@@ -1,6 +1,8 @@
 package ej18;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Alumno extends Persona {
 	private String dni;
@@ -43,16 +45,27 @@ public class Alumno extends Persona {
 			this.nota = 5;
 		}
 	}
-	
+
 	public Boolean validarDni() {
-		if(this.dni.length() == 9 && this.dni != null) {
+		Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
+		Matcher match = patron.matcher(dni);
+		if (match.matches()) {
 			return true;
 		}
 		return false;
 	}
+
+	public Boolean validar() {
+		if (validarDni() && curso != null && nombre != null & nombre.length() >= 10 && edad != null && edad >= 12
+				&& edad <= 65) {
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public String toString() {
-		return nombre + " " + edad + " " + dni + " " + nota + " " + curso;
+		return nombre + " " + edad + " " + dni + " " + nota;
 	}
 
 	@Override
@@ -71,7 +84,5 @@ public class Alumno extends Persona {
 		Alumno other = (Alumno) obj;
 		return Objects.equals(dni, other.dni);
 	}
-	
-	
-	
+
 }
