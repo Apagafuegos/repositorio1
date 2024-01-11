@@ -8,8 +8,6 @@ public class App {
 
 		Scanner sc = new Scanner(System.in);
 
-		// Ejercicio 25
-
 		Alumno[] arrayAlumnos = new Alumno[3];
 		Curso cursoTodos = new Curso(3);
 		cursoTodos.setId(1);
@@ -28,8 +26,7 @@ public class App {
 						} else if (arrayAlumnos[i].equals(arrayAlumnos[0]) && i == 2) {
 							System.err.println("Alumno repetido, introduzca el DNI de nuevo");
 						}
-					} while (arrayAlumnos[i].equals(arrayAlumnos[i - 1])
-							|| arrayAlumnos[i].equals(arrayAlumnos[0]));
+					} while (arrayAlumnos[i].equals(arrayAlumnos[i - 1]) || arrayAlumnos[i].equals(arrayAlumnos[0]));
 				}
 				System.out.println("Introduce el nombre del alumno " + (i + 1));
 				arrayAlumnos[i].setNombre(sc.nextLine());

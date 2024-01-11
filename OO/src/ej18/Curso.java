@@ -6,8 +6,6 @@ public class Curso {
 	protected Integer id;
 	protected String descripcion;
 	protected Alumno[] alumnos;
-	
-	
 
 	public Curso(Integer numeroAlumnos) {
 		super();
@@ -21,10 +19,10 @@ public class Curso {
 	public Alumno[] getAlumnos() {
 		return alumnos;
 	}
-	
-	public void addAlumno(Alumno alumno) {		
+
+	public void addAlumno(Alumno alumno) {
 		for (int i = 0; i < this.alumnos.length; i++) {
-			if(this.alumnos[i] == null) {
+			if (this.alumnos[i] == null) {
 				this.alumnos[i] = alumno;
 				return;
 			}
@@ -42,10 +40,10 @@ public class Curso {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	@Override
 	public String toString() {
-		return id + " " +  descripcion + " " + Arrays.toString(alumnos);
+		return id + " " + descripcion + " " + Arrays.toString(alumnos);
 	}
 
 }
