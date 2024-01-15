@@ -13,7 +13,9 @@ public class Alumno extends Persona {
 
 	public Alumno(String dni) {
 		super();
-		this.dni = dni.toUpperCase();
+		if (dni != null) {
+			this.dni = dni.toUpperCase();
+		}
 	}
 
 	public String getDni() {
@@ -29,7 +31,10 @@ public class Alumno extends Persona {
 	}
 
 	public void setDni(String dni) {
-		this.dni = dni.toUpperCase();
+		if (dni != null) {
+			dni = dni.toUpperCase();
+		}
+		this.dni = dni;
 	}
 
 	public Integer getNota() {
