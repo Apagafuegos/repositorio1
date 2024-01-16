@@ -52,20 +52,24 @@ public class Alumno extends Persona {
 	}
 
 	public Boolean validarDni() {
+		if (dni == null || 
+			dni.isEmpty() ||
+			dni.length() != 9) {
+			return false;
+		}
 		Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
 		Matcher match = patron.matcher(dni);
-		if (match.matches()) {
-			return true;
-		}
-		return false;
+		return (match.matches());
 	}
 
 	public Boolean validar() {
-		if (validarDni() && curso != null && nombre != null & nombre.length() >= 10 && edad != null && edad >= 12
-				&& edad <= 65) {
-			return true;
-		}
-		return false;
+		return (validarDni() &&
+				curso != null &&
+				nombre != null &&
+				nombre.length() >= 10 &&
+				edad != null &&
+				edad >= 12 &&
+				edad <= 65);
 	}
 
 	@Override

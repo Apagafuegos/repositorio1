@@ -46,6 +46,8 @@ public class App {
 		for (int i = 0; i < arrayAlumnos.length; i++) {
 			cursoTodos.addAlumno(arrayAlumnos[i]);
 		}
+		
+		System.out.println(cursoTodos);
 
 		sc.close();
 
