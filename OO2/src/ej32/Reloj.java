@@ -67,15 +67,23 @@ public class Reloj {
 		}
 
 		if (formato24Horas) {
-			return horas + ":" + minutos + ":" + segundos;
+			return formatNumber(horas) + ":" + formatNumber(minutos) + ":" + formatNumber(segundos);
 		} else {
 			if (horas > 12) {
-				return (horas - 12) + ":" + minutos + ":" + segundos + " PM";
+				return formatNumber(horas - 12) + ":" + formatNumber(minutos) + ":" + formatNumber(segundos) + " PM";
 			}
 
-			return horas + ":" + minutos + ":" + segundos + " AM";
+			return formatNumber(horas) + ":" + formatNumber(minutos) + ":" + formatNumber(segundos)+ " AM";
 		}
 
+	}
+	
+	private String formatNumber(Integer x) {
+		if(x >= 10) {
+			return x.toString();
+		}
+		
+		return "0" + x;
 	}
 
 	@Override

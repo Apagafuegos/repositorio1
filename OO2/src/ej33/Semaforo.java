@@ -2,9 +2,9 @@ package ej33;
 
 public class Semaforo {
 
-	protected static final String ROJO = "Rojo";
-	protected static final String AMBAR = "Ámbar";
-	protected static final String VERDE = "Verde";
+	public static final String ROJO = "Rojo";
+	public static final String AMBAR = "Ámbar";
+	public static final String VERDE = "Verde";
 	protected String color;
 	protected Boolean parpadeando;
 
@@ -40,10 +40,10 @@ public class Semaforo {
 	}
 
 	public void cambiarEstado() {
-		if (this.color == VERDE) {
+		if (this.color.equals(VERDE)) {
 			this.color = AMBAR;
 			parpadeando = true;
-		} else if (this.color == ROJO) {
+		} else if (this.color.equals(ROJO)) {
 			this.color = VERDE;
 		} else {
 			if (parpadeando) {
@@ -56,16 +56,11 @@ public class Semaforo {
 
 	@Override
 	public String toString() {
-		if (this.color == ROJO) {
-			return "Semáforo en " + ROJO;
-		} else if (this.color == VERDE) {
-			return "Semáforo en " + VERDE;
-		} else {
-			if (parpadeando) {
-				return "Semáforo en " + AMBAR + " parpadeando";
-			}
-			return "Semáforo en " + AMBAR;
+		if(!parpadeando) {
+			return "Semáforo en " + this.color;
 		}
+		
+		return "Semáforo en " + this.color + " parpadeando";
 	}
 
 }
