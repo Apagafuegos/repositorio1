@@ -4,7 +4,7 @@ public class AppFecha {
 
 	public static void main(String[] args) {
 		
-		Fecha fecha1 = new Fecha();
+		FechaImp fecha1 = new FechaImp();
 		System.out.println(fecha1);
 		fecha1.setMes(2);
 		fecha1.setDia(29);

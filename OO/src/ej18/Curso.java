@@ -1,31 +1,29 @@
 package ej18;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Curso {
 	protected Integer id;
 	protected String descripcion;
-	protected Alumno[] alumnos;
+	protected List<Alumno> alumnos;
 
-	public Curso(Integer numeroAlumnos) {
+	public Curso() {
 		super();
-		this.alumnos = new Alumno[numeroAlumnos];
+		this.alumnos = new ArrayList<Alumno>();
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public Alumno[] getAlumnos() {
+	public List<Alumno> getAlumnos() {
 		return alumnos;
 	}
 
 	public void addAlumno(Alumno alumno) {
-		for (int i = 0; i < this.alumnos.length; i++) {
-			if (this.alumnos[i] == null) {
-				this.alumnos[i] = alumno;
-				return;
-			}
+		for (int i = 0; i < 3; i++) {
+			this.alumnos.add(alumno);
 		}
 	}
 
@@ -43,7 +41,7 @@ public class Curso {
 
 	@Override
 	public String toString() {
-		return id + " " + descripcion + " " + Arrays.toString(alumnos);
+		return id + " " + descripcion + " " + alumnos;
 	}
 
 }
