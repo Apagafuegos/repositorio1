@@ -20,10 +20,6 @@ public class EquipoCombate {
 		}
 		listaPersonajes.add(pers);
 	}
-
-	public List<Personaje> getListaPersonajes() {
-		return listaPersonajes;
-	}
 	
 	public Integer getPuntosVida() {
 		Integer puntosVida = 0;
