@@ -1,5 +1,6 @@
 package listas;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +11,10 @@ public class Listas {
 	public static void main(String[] args) {
 
 		List<String> lista = new ArrayList<>();
+		
+		LocalDate fecha = LocalDate.now();
+		System.out.println(fecha);
+		System.out.println(fecha.isLeapYear());
 
 		Scanner sc = new Scanner(System.in);
 
