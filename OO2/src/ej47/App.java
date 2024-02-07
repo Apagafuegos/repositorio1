@@ -13,7 +13,7 @@ public class App {
 		System.out.println(carrito1);
 		Libro libro1 = new Libro(15, "Así habló Zaratrusta", "Nieztche");
 		carrito1.addArticulo(libro1);
-		carrito1.borrarArticulo(1);
+		carrito1.borrarArticulo(poncho);
 		Integer precioMedio = carrito1.getPrecioMedio();
 		System.out.println(precioMedio);
 		carrito1.vaciarCesta();

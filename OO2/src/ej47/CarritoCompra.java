@@ -2,8 +2,9 @@ package ej47;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarritoCompra {
 	
@@ -11,13 +12,13 @@ public class CarritoCompra {
 	protected LocalDateTime fechaCreacion;
 	protected LocalDateTime fechaModificacion;
 	protected Cliente cliente;
-	protected List<Articulo> listaArticulos;
+	protected Set<Articulo> listaArticulos;
 	
 	public CarritoCompra(Cliente cliente) {
 		this.cliente = cliente;
 		fechaCreacion = LocalDateTime.now();
 		fechaModificacion = LocalDateTime.now();
-		listaArticulos = new ArrayList<>();
+		listaArticulos = new HashSet<>();
 	}
 
 	public LocalDateTime getFechaCreacion() {
@@ -32,7 +33,7 @@ public class CarritoCompra {
 		return cliente;
 	}
 
-	public List<Articulo> getListaArticulos() {
+	public Set<Articulo> getListaArticulos() {
 		return listaArticulos;
 	}
 	
@@ -70,8 +71,13 @@ public class CarritoCompra {
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
-	public void borrarArticulo(Integer a){
+	public void borrarArticulo(Integer a){ //Para listas
 		listaArticulos.remove(a);
+		fechaModificacion = LocalDateTime.now();
+	}
+	
+	public void borrarArticulo(Articulo articulo) { //Para sets
+		listaArticulos.remove(articulo);
 		fechaModificacion = LocalDateTime.now();
 	}
 	
