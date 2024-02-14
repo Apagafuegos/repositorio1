@@ -1,9 +1,10 @@
 package ej47;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class CarritoCompra {
@@ -41,19 +42,19 @@ public class CarritoCompra {
 		return listaArticulos.size();
 	}
 	
-	public Integer getTotal() {
-		Integer total = 0;
+	public BigDecimal getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
 		for (Articulo articulo : listaArticulos) {
-			total += articulo.getPrecio();
+			total.add(articulo.getPrecio());
 		}
 		return total;
 	}
 	
-	public Integer getPrecioMedio() {
+	public BigDecimal getPrecioMedio() {
 		if(!listaArticulos.isEmpty()) {
-			Integer precio = this.getTotal();
-			Integer cant = this.getCantidad();
-			return (precio / cant);
+			BigDecimal precio = this.getTotal();
+			BigDecimal cant = new BigDecimal(this.getCantidad());
+			return precio.divide(cant, 2, RoundingMode.HALF_DOWN);
 		}
 		
 		return null;

@@ -1,11 +1,13 @@
 package ej47;
 
+import java.math.BigDecimal;
+
 public class Ropa extends Articulo {
 
 	protected String talla;
 	protected String color;
 	
-	public Ropa(Integer precio, String talla, String descripcion, String color) {
+	public Ropa(BigDecimal precio, String talla, String descripcion, String color) {
 		super(precio, descripcion);
 		this.talla = talla;
 		this.color = color;		

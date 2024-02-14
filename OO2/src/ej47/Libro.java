@@ -1,8 +1,10 @@
 package ej47;
 
+import java.math.BigDecimal;
+
 public class Libro extends Articulo {
 
-	public Libro(Integer precio, String descripcion, String autor) {
+	public Libro(BigDecimal precio, String descripcion, String autor) {
 		super(precio, descripcion);
 		this.autor = autor;
 	}
