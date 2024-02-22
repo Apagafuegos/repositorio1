@@ -40,13 +40,15 @@ public class Partida {
 		return tablero.getLetrasIntroducidas();
 	}
 
+	/**
+	 * Initialises the game and initiates the loop that does not finish until 10
+	 * mistakes are made or the word is guessed.
+	 */
+
 	public void start() {
 		ui.bienvenida(this);
 		ui.enseñarTablero(tablero);
-		do {
-			ui.anunciar();
-			tablero.añadirLetra(SC.nextLine(), this, ui);
-		} while (partidaTerminada());
+		buclePartida();
 		ui.partidaFinalizada(this);
 	}
 
@@ -54,7 +56,26 @@ public class Partida {
 		this.fallos = fallos;
 	}
 
+	/**
+	 * If one of the two requirements (more than 10 errors or word is guessed) for
+	 * the game to finish are met, false is returned.
+	 * 
+	 * @return Boolean, false if game is finished, true otherwise
+	 */
+
 	public Boolean partidaTerminada() {
 		return !(fallos == 10 || tablero.getTableroJugador().equals(tablero.getTableroRespuesta()));
+	}
+
+	/**
+	 * Shows a message in console and calls añadirLetra() method from Tablero class
+	 * until partidaTerminada() returns false.
+	 */
+
+	public void buclePartida() {
+		do {
+			ui.anunciar();
+			tablero.añadirLetra(SC.nextLine().trim().toLowerCase(), this, ui);
+		} while (partidaTerminada());
 	}
 }

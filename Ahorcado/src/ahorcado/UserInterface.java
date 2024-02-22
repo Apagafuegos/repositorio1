@@ -24,7 +24,6 @@ public class UserInterface {
 
 	public void enseñarTablero(Tablero tab) {
 		System.out.println(tab.getTableroJugador());
-		System.out.println(tab.getTableroRespuesta());
 	}
 
 	public void partidaFinalizada(Partida part) {
@@ -41,6 +40,10 @@ public class UserInterface {
 
 	public void letraYaIntroducida() {
 		System.err.println("Ya has introducido esa letra");
+	}
+	
+	public void errorInput() {
+		System.err.println("El input introducido no es correcto. Inténtelo de nuevo");
 	}
 
 }

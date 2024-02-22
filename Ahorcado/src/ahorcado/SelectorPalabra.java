@@ -26,8 +26,14 @@ public class SelectorPalabra {
 			}
 		};
 	}
-	
+
+	/**
+	 * Randomly selects one of the Strings contained into List palabras.
+	 * 
+	 * @return a String containing the word to guess
+	 */
+
 	public String seleccionar() {
-		return palabras.get(RAND.nextInt(0,palabras.size()));
-	} 
+		return palabras.get(RAND.nextInt(0, palabras.size()));
+	}
 }
