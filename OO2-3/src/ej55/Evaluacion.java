@@ -2,13 +2,10 @@ package ej55;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import org.w3c.dom.Notation;
 
 public class Evaluacion {
 
@@ -56,52 +53,75 @@ public class Evaluacion {
 	}
 
 	public Integer obtenerCantidadAprobados() {
-		int cant = (int) notas.values().stream().filter(e -> e.compareTo(new BigDecimal(5)) >= 0).count();
-		return cant;
+		return (int) notas.values().stream().filter(e -> e.compareTo(new BigDecimal(5)) >= 0).count();
 	}
 
 	public List<String> obtenerSuspensos() {
-		List<String> listaSuspensos = new ArrayList<>();
-		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
-			String key = entry.getKey();
-			BigDecimal val = entry.getValue();
-			if (val.compareTo(new BigDecimal(5)) < 0) {
-				listaSuspensos.add(key);
-			}
-		}
-
-		return listaSuspensos;
+//		List<String> listaSuspensos = new ArrayList<>();
+//		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
+//			String key = entry.getKey();
+//			BigDecimal val = entry.getValue();
+//			if (val.compareTo(new BigDecimal(5)) < 0) {
+//				listaSuspensos.add(key);
+//			}
+//		}
+		
+//		notas.entrySet().stream().forEach((p) -> {
+//			if(p.getValue().compareTo(new BigDecimal(5)) < 0) {
+//				listaSuspensos.add(p.getKey());
+//			}
+//		});
+		return notas.keySet().stream().filter(e -> !this.isAprobado(notas.get(e))).toList();
 	}
 
 	public void borrarAprobados() {
-		for (Iterator<BigDecimal> iterator = notas.values().iterator(); iterator.hasNext();) {
-			BigDecimal nota = (BigDecimal) iterator.next();
-			if (nota.compareTo(new BigDecimal(5)) > 0) {
-				iterator.remove();
-			}
-		}
+//		for (Iterator<BigDecimal> iterator = notas.values().iterator(); iterator.hasNext();) {
+//			BigDecimal nota = (BigDecimal) iterator.next();
+//			if (nota.compareTo(new BigDecimal(5)) > 0) {
+//				iterator.remove();
+//			}
+//		}
+		
+		notas.values().removeIf(e -> e.compareTo(new BigDecimal(5)) < 0);
+		
+//		notas.keySet().stream().filter(e -> notas.get(e).compareTo(new BigDecimal(5)) >= 5).forEach(i -> {
+//			notas.remove(i);
+//		});
 	}
 	
 	@Override
 	public String toString() {
-		String aux = "Aprobados:\n";
-		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
-			String key = entry.getKey();
-			BigDecimal val = entry.getValue();
-			if (val.compareTo(new BigDecimal(5)) > 0) {
-				aux += "\t" + key + " (" + val.setScale(2, RoundingMode.HALF_DOWN) + ")" + "\n";
-			}			
-		}
-		aux += "Suspensos:\n"; 
-		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
-			String key = entry.getKey();
-			BigDecimal val = entry.getValue();
-			if (val.compareTo(new BigDecimal(5)) < 0) {
-				aux += "\t" + key + " (" + val.setScale(2, RoundingMode.HALF_DOWN) + ")" + "\n";
-			}			
-		}
+		StringBuilder aux = new StringBuilder("Aprobados:\n");
+//		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
+//			String key = entry.getKey();
+//			BigDecimal val = entry.getValue();
+//			if (val.compareTo(new BigDecimal(5)) > 0) {
+//				aux += "\t" + key + " (" + val.setScale(2, RoundingMode.HALF_DOWN) + ")\n";
+//			}			
+//		}
 		
-		return aux;
+		notas.keySet().stream().filter(e -> this.isAprobado(notas.get(e))).forEach((e) -> {
+			aux.append("\t" + e + " (" + notas.get(e).setScale(2, RoundingMode.HALF_DOWN) + ")\n");
+		});
+		
+		aux.append("Suspensos:\n"); 
+//		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
+//			String key = entry.getKey();
+//			BigDecimal val = entry.getValue();
+//			if (val.compareTo(new BigDecimal(5)) < 0) {
+//				aux += "\t" + key + " (" + val.setScale(2, RoundingMode.HALF_DOWN) + ")" + "\n";
+//			}			
+//		}
+		notas.keySet().stream().filter(e -> !this.isAprobado(notas.get(e))).forEach((e) -> {
+			aux.append("\t" + e + " (" + notas.get(e).setScale(2, RoundingMode.HALF_DOWN) + ")\n");
+		});
+		
+		return aux.toString();
+	}
+	
+	
+	private Boolean isAprobado(BigDecimal nota) {
+		return nota.compareTo(new BigDecimal(5)) >= 0;
 	}
 
 }
