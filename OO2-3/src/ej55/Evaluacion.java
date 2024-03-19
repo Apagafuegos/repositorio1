@@ -82,7 +82,7 @@ public class Evaluacion {
 //			}
 //		}
 		
-		notas.values().removeIf(e -> e.compareTo(new BigDecimal(5)) < 0);
+		notas.values().removeIf(e -> e.compareTo(new BigDecimal(5)) > 0);
 		
 //		notas.keySet().stream().filter(e -> notas.get(e).compareTo(new BigDecimal(5)) >= 5).forEach(i -> {
 //			notas.remove(i);
