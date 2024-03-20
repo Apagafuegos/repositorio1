@@ -16,11 +16,16 @@ public class Evaluacion {
 	}
 
 	public Boolean addNota(String dni, BigDecimal nota) {
-		if (!notas.containsKey(dni)) {
-			notas.put(dni, nota);
-			return true;
+		if (nota.compareTo(BigDecimal.ZERO) < 0)
+			throw new IllegalArgumentException("La nota no puede ser menor que 0");
+		else {
+			if (!notas.containsKey(dni)) {
+				notas.put(dni, nota);
+				return true;
+			}
+			return false;
 		}
-		return false;
+
 	}
 
 	public Boolean corregirNota(String dni, BigDecimal nota) {
@@ -40,15 +45,15 @@ public class Evaluacion {
 	}
 
 	public BigDecimal obtenerNotaMedia() {
-		/*BigDecimal aux = BigDecimal.ZERO;
-		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
-			BigDecimal val = entry.getValue();
-			aux = aux.add(val);
-		}*/
+		/*
+		 * BigDecimal aux = BigDecimal.ZERO; for (Map.Entry<String, BigDecimal> entry :
+		 * notas.entrySet()) { BigDecimal val = entry.getValue(); aux = aux.add(val); }
+		 */
 		BigDecimal notaTotal;
-		notaTotal = notas.values().stream().reduce((a,b) -> a.add(b)).get();
-		
-		//return aux.divide(new BigDecimal(notas.size())).setScale(2, RoundingMode.HALF_DOWN);
+		notaTotal = notas.values().stream().reduce((a, b) -> a.add(b)).get();
+
+		// return aux.divide(new BigDecimal(notas.size())).setScale(2,
+		// RoundingMode.HALF_DOWN);
 		return notaTotal.divide(new BigDecimal(notas.size())).setScale(2, RoundingMode.HALF_DOWN);
 	}
 
@@ -65,7 +70,7 @@ public class Evaluacion {
 //				listaSuspensos.add(key);
 //			}
 //		}
-		
+
 //		notas.entrySet().stream().forEach((p) -> {
 //			if(p.getValue().compareTo(new BigDecimal(5)) < 0) {
 //				listaSuspensos.add(p.getKey());
@@ -81,14 +86,14 @@ public class Evaluacion {
 //				iterator.remove();
 //			}
 //		}
-		
+
 		notas.values().removeIf(e -> e.compareTo(new BigDecimal(5)) > 0);
-		
+
 //		notas.keySet().stream().filter(e -> notas.get(e).compareTo(new BigDecimal(5)) >= 5).forEach(i -> {
 //			notas.remove(i);
 //		});
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder aux = new StringBuilder("Aprobados:\n");
@@ -99,12 +104,12 @@ public class Evaluacion {
 //				aux += "\t" + key + " (" + val.setScale(2, RoundingMode.HALF_DOWN) + ")\n";
 //			}			
 //		}
-		
+
 		notas.keySet().stream().filter(e -> this.isAprobado(notas.get(e))).forEach((e) -> {
 			aux.append("\t" + e + " (" + notas.get(e).setScale(2, RoundingMode.HALF_DOWN) + ")\n");
 		});
-		
-		aux.append("Suspensos:\n"); 
+
+		aux.append("Suspensos:\n");
 //		for (Map.Entry<String, BigDecimal> entry : notas.entrySet()) {
 //			String key = entry.getKey();
 //			BigDecimal val = entry.getValue();
@@ -115,11 +120,10 @@ public class Evaluacion {
 		notas.keySet().stream().filter(e -> !this.isAprobado(notas.get(e))).forEach((e) -> {
 			aux.append("\t" + e + " (" + notas.get(e).setScale(2, RoundingMode.HALF_DOWN) + ")\n");
 		});
-		
+
 		return aux.toString();
 	}
-	
-	
+
 	private Boolean isAprobado(BigDecimal nota) {
 		return nota.compareTo(new BigDecimal(5)) >= 0;
 	}

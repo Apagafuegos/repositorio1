@@ -27,7 +27,7 @@ public class App {
 				palabras.replace(letra.toUpperCase(), aux);
 			}
 
-		} while (!palabra.equalsIgnoreCase("fin"));
+		} while (!esFin(palabra));
 
 		StringBuilder letraAElegir = new StringBuilder("");
 
@@ -49,10 +49,14 @@ public class App {
 				System.err.println("No hay ninguna palabra con dicha letra");
 			}
 
-		} while (!letraAElegir.toString().equalsIgnoreCase("fin"));
+		} while (!esFin(letraAElegir.toString()));
 
 		sc.close();
 
+	}
+
+	public static Boolean esFin(String palabra) {
+		return palabra.equalsIgnoreCase("fin");
 	}
 
 }
