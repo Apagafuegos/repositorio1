@@ -1,2 +1,7 @@
 /bin/
+<<<<<<< HEAD
 /.settings/
+=======
+/.settings/
+.classpath
+>>>>>>> b3a3ae9ddc90695d8575560d2985df526c0319f6
