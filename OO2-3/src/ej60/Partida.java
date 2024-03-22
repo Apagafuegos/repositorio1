@@ -12,6 +12,7 @@ public class Partida {
 
 	public void setJ1(Jugador j1) {
 		this.j1 = j1;
+		System.out.println("hola");
 	}
 
 	public void setJ2(Jugador j2) {
