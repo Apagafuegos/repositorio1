@@ -19,8 +19,9 @@ public class Partida {
 		this.j2 = j2;
 	}
 	
-	public void iniciar() {
+	public void iniciar(Jugador j1, Jugador j2) {
 		do { 
+			
 			
 		}while(true);
 	}

@@ -8,7 +8,6 @@ public class Jugador {
 	private String nombre;
 	private Boolean automatico;
 	private Mano mano;
-	@SuppressWarnings("unused")
 	private Integer turno;
 	private static final Scanner SC = new Scanner(System.in);
 
