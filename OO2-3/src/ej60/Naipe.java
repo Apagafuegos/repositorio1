@@ -12,17 +12,26 @@ public class Naipe {
 	}
 
 	public Integer getValor() {
-		if (numero.equalsIgnoreCase("sota") || numero.equalsIgnoreCase("reina") || numero.equalsIgnoreCase("rey")) {
+		if (numero.equalsIgnoreCase("jack") || numero.equalsIgnoreCase("queen") || numero.equalsIgnoreCase("king") || numero.equalsIgnoreCase("ace"))			
 			return 10;
-		}
 		return Integer.parseInt(numero);
 	}
 
 	public Integer getValorAlt() {
-		if (!numero.equalsIgnoreCase("as"))
+		if (!numero.equalsIgnoreCase("ace"))
 			return this.getValor();
 
 		return 11;
 	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public String getPalo() {
+		return palo;
+	}
+	
+	
 
 }

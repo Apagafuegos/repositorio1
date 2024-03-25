@@ -18,7 +18,7 @@ public class Baraja {
 		Naipe naipe = null;
 		for (Integer i = 1; i <= 13; i++) {
 			if (i == 1) {
-				naipe = new Naipe("ace", palo);
+				naipe = new Naipe("as", palo);
 			} else if (i == 11 || i == 12 || i == 13) {
 				if (i == 11) {
 					naipe = new Naipe("jack", palo);
@@ -49,7 +49,7 @@ public class Baraja {
 	@SuppressWarnings("unlikely-arg-type")
 	public Naipe obtenerCarta() {
 		Random rand = new Random();
-		Integer num = rand.nextInt(1, 53);
+		Integer num = rand.nextInt(1, 52);
 		Naipe aux = listaCartas.get(num);
 		this.listaCartas.remove(num);
 		return aux;
